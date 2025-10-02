@@ -1,0 +1,68 @@
+{% include "partials/header.html" %} <!--HEADER NI-->
+
+    <body class="sb-nav-fixed">
+        
+        {% include "partials/navbar.html" %} <!--NAVBAR NI-->
+
+        <div id="layoutSidenav">
+            
+            {% include "partials/sidebar.html" %}<!--SIDEBAR NI-->
+
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+                        <h1 class="mt-4">User List</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">System User</li>
+                        </ol>
+                    
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                DataTable Example
+                            </div>
+                            {% if user_list %}
+                            <div class="card-body">
+                                
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Course</th>
+                                            <th>Image</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Course</th>
+                                            <th>Image</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        {% for user in user_list %}
+                                        <tr>
+                                            <th>{{ user.first_name }}</th>
+                                            <th>{{ user.last_name }}</th>
+                                            <th>{{ user.email }}</th>
+                                            <th><img src="media/{{ user.user_image }}" alt="userimage" width="50" class="rounded-circle"></center></th>
+                                        </tr>
+                                        {% endfor %}
+                                       
+                                    </tbody>
+                                </table>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </main>
+
+               {% include "partials/footer.html" %} <!--FOOTER NI-->
+
+            </div>
+        </div>
+       {% include "partials/scripts.html" %} <!--SCRIPTS NI-->
+    </body>
+</html>
